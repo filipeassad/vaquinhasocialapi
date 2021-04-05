@@ -4,7 +4,7 @@ var autenticacao = require('../../autenticacao/autenticacaoController');
 var router = express.Router();
 
 router.route('/vaquinha')
-    .get(autenticacao.validaToken, vaquinhaController.obterTodosVaquinha)
+    .get(autenticacao.validaToken, vaquinhaController.obterTodosVaquinhas)
     .post(autenticacao.validaToken, vaquinhaController.inserirVaquinha);
 
 router.route('/vaquinha/:id')

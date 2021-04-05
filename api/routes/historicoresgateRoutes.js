@@ -1,24 +1,24 @@
 var express = require('express');
 var historicoresgateController = require('../controllers/historicoresgateController');
-var historicoresgate = require('../../historicoresgate/historicoresgateController');
+var autenticacao = require('../../autenticacao/autenticacaoController');
 var router = express.Router();
 
 router.route('/historicoresgate')
-    .get(historicoresgate.validaToken, historicoresgateController.obterTodosHistoricoresgate)
-    .post(historicoresgate.validaToken, historicoresgateController.inserirHistoricoresgate);
+    .get(autenticacao.validaToken, historicoresgateController.obterTodosHistoricoresgate)
+    .post(autenticacao.validaToken, historicoresgateController.inserirHistoricoresgate);
 
 router.route('/historicoresgate/:id')
-    .get(historicoresgate.validaToken, historicoresgateController.obterHistoricoresgate)
-    .delete(historicoresgate.validaToken, historicoresgateController.deletarHistoricoresgate)
-    .put(historicoresgate.validaToken, historicoresgateController.alterarHistoricoresgate);
+    .get(autenticacao.validaToken, historicoresgateController.obterHistoricoresgate)
+    .delete(autenticacao.validaToken, historicoresgateController.deletarHistoricoresgate)
+    .put(autenticacao.validaToken, historicoresgateController.alterarHistoricoresgate);
 
 router.route('/historicoresgateUsuario/:usuarioId')
-    .get(historicoresgate.validaToken, historicoresgateController.obterHistoricoresgatePorUsuario);
+    .get(autenticacao.validaToken, historicoresgateController.obterHistoricoresgatePorUsuario);
 
 router.route('/historicoresgate/imagemUsuario/:id')
-    .get(historicoresgate.validaToken, historicoresgateController.obterImagemHistoricoresgate);
+    .get(autenticacao.validaToken, historicoresgateController.obterImagemHistoricoresgate);
 
 router.route('/todosHistoricoresgatesValidos')
-    .get(historicoresgate.validaToken, historicoresgateController.obterTodosHistoricoresgateValidos);
+    .get(autenticacao.validaToken, historicoresgateController.obterTodosHistoricoresgateValidos);
 
 module.exports = router;

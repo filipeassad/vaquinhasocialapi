@@ -1,24 +1,24 @@
 var express = require('express');
 var usuarioController = require('../controllers/usuarioController');
-var usuario = require('../../usuario/usuarioController');
+var autenticacao = require('../../autenticacao/autenticacaoController');
 var router = express.Router();
 
 router.route('/usuario')
-    .get(usuario.validaToken, usuarioController.obterTodosUsuario)
-    .post(usuario.validaToken, usuarioController.inserirUsuario);
+    .get(autenticacao.validaToken, usuarioController.obterTodosUsuario)
+    .post(autenticacao.validaToken, usuarioController.inserirUsuario);
 
 router.route('/usuario/:id')
-    .get(usuario.validaToken, usuarioController.obterUsuario)
-    .delete(usuario.validaToken, usuarioController.deletarUsuario)
-    .put(usuario.validaToken, usuarioController.alterarUsuario);
+    .get(autenticacao.validaToken, usuarioController.obterUsuario)
+    .delete(autenticacao.validaToken, usuarioController.deletarUsuario)
+    .put(autenticacao.validaToken, usuarioController.alterarUsuario);
 
 router.route('/usuarioUsuario/:usuarioId')
-    .get(usuario.validaToken, usuarioController.obterUsuarioPorUsuario);
+    .get(autenticacao.validaToken, usuarioController.obterUsuarioPorUsuario);
 
 router.route('/usuario/imagemUsuario/:id')
-    .get(usuario.validaToken, usuarioController.obterImagemUsuario);
+    .get(autenticacao.validaToken, usuarioController.obterImagemUsuario);
 
 router.route('/todosUsuariosValidos')
-    .get(usuario.validaToken, usuarioController.obterTodosUsuarioValidos);
+    .get(autenticacao.validaToken, usuarioController.obterTodosUsuarioValidos);
 
 module.exports = router;

@@ -1,24 +1,24 @@
 var express = require('express');
 var vaquinhaController = require('../controllers/vaquinhaController');
-var vaquinha = require('../../vaquinha/vaquinhaController');
+var autenticacao = require('../../autenticacao/autenticacaoController');
 var router = express.Router();
 
 router.route('/vaquinha')
-    .get(vaquinha.validaToken, vaquinhaController.obterTodosVaquinha)
-    .post(vaquinha.validaToken, vaquinhaController.inserirVaquinha);
+    .get(autenticacao.validaToken, vaquinhaController.obterTodosVaquinha)
+    .post(autenticacao.validaToken, vaquinhaController.inserirVaquinha);
 
 router.route('/vaquinha/:id')
-    .get(vaquinha.validaToken, vaquinhaController.obterVaquinha)
-    .delete(vaquinha.validaToken, vaquinhaController.deletarVaquinha)
-    .put(vaquinha.validaToken, vaquinhaController.alterarVaquinha);
+    .get(autenticacao.validaToken, vaquinhaController.obterVaquinha)
+    .delete(autenticacao.validaToken, vaquinhaController.deletarVaquinha)
+    .put(autenticacao.validaToken, vaquinhaController.alterarVaquinha);
 
 router.route('/vaquinhaVaquinha/:vaquinhaId')
-    .get(vaquinha.validaToken, vaquinhaController.obterVaquinhaPorVaquinha);
+    .get(autenticacao.validaToken, vaquinhaController.obterVaquinhaPorVaquinha);
 
 router.route('/vaquinha/imagemVaquinha/:id')
-    .get(vaquinha.validaToken, vaquinhaController.obterImagemVaquinha);
+    .get(autenticacao.validaToken, vaquinhaController.obterImagemVaquinha);
 
 router.route('/todosVaquinhasValidos')
-    .get(vaquinha.validaToken, vaquinhaController.obterTodosVaquinhaValidos);
+    .get(autenticacao.validaToken, vaquinhaController.obterTodosVaquinhaValidos);
 
 module.exports = router;

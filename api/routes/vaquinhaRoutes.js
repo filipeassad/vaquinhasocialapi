@@ -12,13 +12,7 @@ router.route('/vaquinha/:id')
     .delete(autenticacao.validaToken, vaquinhaController.deletarVaquinha)
     .put(autenticacao.validaToken, vaquinhaController.alterarVaquinha);
 
-router.route('/vaquinhaVaquinha/:vaquinhaId')
-    .get(autenticacao.validaToken, vaquinhaController.obterVaquinhaPorVaquinha);
-
 router.route('/vaquinha/imagemVaquinha/:id')
     .get(autenticacao.validaToken, vaquinhaController.obterImagemVaquinha);
-
-router.route('/todosVaquinhasValidos')
-    .get(autenticacao.validaToken, vaquinhaController.obterTodosVaquinhaValidos);
 
 module.exports = router;
